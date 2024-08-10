@@ -1,0 +1,118 @@
+{
+	"Lectures": [
+		{
+			"Name": "Privatrecht",
+			"Chapters": [
+				{
+					"Name": "Chapter 1",
+					"MCQuestions": [
+						{
+							"Name": "Question 1",
+							"Answers": [
+								{
+									"Text": "Correct answer 1",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooong answer 2",
+									"Correct": false,
+								},
+								{
+									"Text": "Correct answer 3",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect answer 4",
+									"Correct": false,
+								},
+							]
+						}
+					]
+				},
+				{
+					"Name": "Chapter 2",
+					"MCQuestions": [
+						{
+							"Name": "Question 1",
+							"Answers": [
+								{
+									"Text": "Correct answer 1",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooong answer 2",
+									"Correct": false,
+								},
+								{
+									"Text": "Correct answer 3",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect answer 4",
+									"Correct": false,
+								},
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "Erbrecht",
+			"Chapters": [
+				{
+					"Name": "Chapter 3",
+					"MCQuestions": [
+						{
+							"Name": "Question 1",
+							"Answers": [
+								{
+									"Text": "Correct answer 1",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooong answer 2",
+									"Correct": false,
+								},
+								{
+									"Text": "Correct answer 3",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect answer 4",
+									"Correct": false,
+								},
+							]
+						}
+					]
+				},
+				{
+					"Name": "Chapter 4",
+					"MCQuestions": [
+						{
+							"Name": "Question 1",
+							"Answers": [
+								{
+									"Text": "Correct answer 1",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect very loooooooooooooooooooooooooooooooooooooooooooooooooooooooooong answer 2",
+									"Correct": false,
+								},
+								{
+									"Text": "Correct answer 3",
+									"Correct": true,
+								},
+								{
+									"Text": "Incorrect answer 4",
+									"Correct": false,
+								},
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0mar2q822o4d"]
+[gd_scene load_steps=11 format=3 uid="uid://c0mar2q822o4d"]
 
 [ext_resource type="LabelSettings" uid="uid://d6gohf1yj5gp" path="res://Fonts/title.tres" id="1_ik0oc"]
 [ext_resource type="Script" path="res://SelectLecture/SelectLecture.gd" id="1_m3n7y"]
 [ext_resource type="LabelSettings" uid="uid://j4am0nttevp" path="res://Fonts/normal_text.tres" id="2_6e70b"]
 [ext_resource type="StyleBox" uid="uid://lr75ncsg3vbm" path="res://Fonts/button_style.tres" id="3_3qgc1"]
 [ext_resource type="Theme" uid="uid://bvd8u171meh78" path="res://Fonts/menu_button.tres" id="4_p25ll"]
+[ext_resource type="Script" path="res://SelectLecture/LectureOptionButton.gd" id="5_grdbt"]
+[ext_resource type="Script" path="res://SelectLecture/ChooseAllChaptersButton.gd" id="7_bfv74"]
+[ext_resource type="Script" path="res://SelectLecture/ChapterContainer.gd" id="7_sn752"]
 
 [sub_resource type="Theme" id="Theme_ankek"]
 OptionButton/colors/font_color = Color(0, 0, 0, 1)
@@ -48,13 +51,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -639.0
-offset_top = 16.0
-offset_right = 639.0
-offset_bottom = 148.0
+offset_left = -280.5
+offset_top = 32.0
+offset_right = 280.5
+offset_bottom = 164.0
 grow_horizontal = 2
 scale = Vector2(1.00124, 1)
-text = "Choose lecture and chapter"
+text = "Choose quiz"
 label_settings = ExtResource("1_ik0oc")
 
 [node name="CurrentLectureLabel" type="Label" parent="."]
@@ -70,7 +73,8 @@ grow_horizontal = 2
 text = "Select lecture:"
 label_settings = ExtResource("2_6e70b")
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="LectureOptionButton" type="OptionButton" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -88,29 +92,21 @@ theme_override_styles/focus = ExtResource("3_3qgc1")
 theme_override_styles/normal = ExtResource("3_3qgc1")
 theme_override_styles/hover = ExtResource("3_3qgc1")
 theme_override_styles/pressed = ExtResource("3_3qgc1")
-item_count = 4
-popup/item_0/text = "Rechtsgeschichte"
-popup/item_0/id = 0
-popup/item_1/text = "Europarecht"
-popup/item_1/id = 1
-popup/item_2/text = "IT-Recht"
-popup/item_2/id = 2
-popup/item_3/text = "Privatrecht"
-popup/item_3/id = 3
+script = ExtResource("5_grdbt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="SelectHBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -758.5
+offset_left = -241.0
 offset_top = 280.0
-offset_right = 758.5
+offset_right = 241.0
 offset_bottom = 363.0
 grow_horizontal = 2
-theme_override_constants/separation = 32
 
-[node name="ChooseAllChaptersButton" type="Button" parent="HBoxContainer"]
+[node name="ChooseAllChaptersButton" type="Button" parent="SelectHBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_p25ll")
@@ -118,32 +114,52 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = ExtResource("3_3qgc1")
 theme_override_styles/hover = ExtResource("3_3qgc1")
 text = "Choose all chapters"
+script = ExtResource("7_bfv74")
 
-[node name="AddLectureButton" type="Button" parent="HBoxContainer"]
+[node name="EditHBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -661.0
+offset_top = -800.0
+offset_right = 661.0
+offset_bottom = -717.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+
+[node name="AddLectureButton" type="Button" parent="EditHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_p25ll")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = ExtResource("3_3qgc1")
 theme_override_styles/hover = ExtResource("3_3qgc1")
+disabled = true
 text = "Add lecture"
 
-[node name="DeleteLectureButton" type="Button" parent="HBoxContainer"]
+[node name="DeleteLectureButton" type="Button" parent="EditHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_p25ll")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = ExtResource("3_3qgc1")
 theme_override_styles/hover = ExtResource("3_3qgc1")
+disabled = true
 text = "Delete chosen lecture"
 
-[node name="AddChapterButton" type="Button" parent="HBoxContainer"]
+[node name="AddChapterButton" type="Button" parent="EditHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_p25ll")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = ExtResource("3_3qgc1")
 theme_override_styles/hover = ExtResource("3_3qgc1")
+disabled = true
 text = "Add new chapter"
 
 [node name="AvailableChaptersLabel" type="Label" parent="."]
@@ -168,84 +184,12 @@ offset_bottom = 1060.0
 scale = Vector2(0.998412, 1)
 
 [node name="ChapterContainer" type="VBoxContainer" parent="ChapterScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/separation = 16
-
-[node name="ChapterButton1" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-theme_override_styles/hover = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte1"
-
-[node name="ChapterButton2" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-theme_override_styles/hover = ExtResource("3_3qgc1")
-text = "Loong Rechtsgeschichte2"
-
-[node name="ChapterButton3" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte3"
-
-[node name="ChapterButton4" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte4"
-
-[node name="ChapterButton5" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte5"
-
-[node name="ChapterButton6" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte6"
-
-[node name="ChapterButton7" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte7"
-
-[node name="ChapterButton8" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte8"
-
-[node name="ChapterButton9" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_p25ll")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_3qgc1")
-text = "Rechtsgeschichte9"
+script = ExtResource("7_sn752")
 
 [node name="MenuButton" type="Button" parent="."]
 layout_mode = 1
@@ -262,4 +206,9 @@ size_flags_horizontal = 4
 theme = ExtResource("4_p25ll")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_nsrgs")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+theme_override_styles/pressed = ExtResource("3_3qgc1")
 text = "Menu"
+
+[connection signal="pressed" from="SelectHBoxContainer/ChooseAllChaptersButton" to="SelectHBoxContainer/ChooseAllChaptersButton" method="onChooseAllChaptersButtonPressed"]
+[connection signal="pressed" from="MenuButton" to="." method="onMenuButtonPressed"]

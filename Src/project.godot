@@ -15,6 +15,11 @@ run/main_scene="res://Menu/Menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SaveFileDataHandler="*res://DataHandler/SaveFileDataHandler.gd"
+AppStateDataHandler="*res://DataHandler/AppStateDataHandler.gd"
+
 [display]
 
 window/size/viewport_width=1920
