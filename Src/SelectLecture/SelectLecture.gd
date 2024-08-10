@@ -2,26 +2,24 @@ class_name SelectLecture
 extends Control
 
 @onready var titleLabel: Label = $TitleLabel
-@onready var chooseAllChaptersButton: Button = $HBoxContainer/ChooseAllChaptersButton
-@onready var addLectureButton: Button = $HBoxContainer/AddLectureButton
-@onready var deleteLectureButton: Button = $HBoxContainer/DeleteLectureButton
-@onready var addChapterButton: Button = $HBoxContainer/AddChapterButton
-
-var isEdit: bool
+@onready var selectHBoxContainer: HBoxContainer = $SelectHBoxContainer
+@onready var editHBoxContainer: HBoxContainer = $EditHBoxContainer
 
 func _ready() -> void:
-	# TODO get isEdit from state/autoload
-	var isEdit = false
+	handleSelectAndEditButtons()
+
+func handleSelectAndEditButtons() -> void:
+	var appStateDataHandler = get_node("/root/AppStateDataHandler")
+	var isEdit = appStateDataHandler.isEditMode
 	
 	if isEdit:
-		titleLabel.text = "Choose lecture and chapter to edit"
-		chooseAllChaptersButton.visible = false
-		addLectureButton.visible = true
-		deleteLectureButton.visible = true
-		addChapterButton.visible = true
+		titleLabel.text = "Choose quiz to edit"
+		selectHBoxContainer.visible = false
+		editHBoxContainer.visible = true
 	else:
-		titleLabel.text = "Choose lecture and chapter for quiz"
-		chooseAllChaptersButton.visible = true
-		addLectureButton.visible = false
-		deleteLectureButton.visible = false
-		addChapterButton.visible = false
+		titleLabel.text = "Choose quiz"
+		selectHBoxContainer.visible = true
+		editHBoxContainer.visible = false
+
+func onMenuButtonPressed() -> void:
+	get_tree().change_scene_to_file("res://Menu/Menu.tscn")

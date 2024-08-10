@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://1bxmle6k5owq"]
+
+[ext_resource type="Theme" uid="uid://bvd8u171meh78" path="res://Fonts/menu_button.tres" id="1_81ltx"]
+[ext_resource type="StyleBox" uid="uid://lr75ncsg3vbm" path="res://Fonts/button_style.tres" id="2_jt511"]
+[ext_resource type="Script" path="res://SelectLecture/ChapterButton.gd" id="3_m6bqq"]
+
+[node name="ChapterButton" type="Button"]
+size_flags_horizontal = 4
+theme = ExtResource("1_81ltx")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("2_jt511")
+theme_override_styles/hover = ExtResource("2_jt511")
+theme_override_styles/pressed = ExtResource("2_jt511")
+text = "Rechtsgeschichte1"
+script = ExtResource("3_m6bqq")
+
+[connection signal="pressed" from="." to="." method="onPressed"]
