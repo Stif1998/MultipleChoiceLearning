@@ -1,0 +1,224 @@
+[gd_scene load_steps=7 format=3 uid="uid://g5eqn7itu60x"]
+
+[ext_resource type="LabelSettings" uid="uid://d6gohf1yj5gp" path="res://Fonts/title.tres" id="1_ucxpf"]
+[ext_resource type="LabelSettings" uid="uid://j4am0nttevp" path="res://Fonts/normal_text.tres" id="2_4kfko"]
+[ext_resource type="StyleBox" uid="uid://lr75ncsg3vbm" path="res://Fonts/button_style.tres" id="3_ls1pd"]
+[ext_resource type="Theme" uid="uid://bvd8u171meh78" path="res://Fonts/menu_button.tres" id="4_bbf0n"]
+[ext_resource type="LabelSettings" uid="uid://dxt013ylsmuw4" path="res://Fonts/correct_answer_text.tres" id="4_tl3df"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k6ch"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.629674, 0.629675, 0.629675, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 10
+
+[node name="QuizScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -928.0
+offset_top = 16.0
+offset_right = -74.0
+offset_bottom = 148.0
+grow_horizontal = 2
+scale = Vector2(0.998198, 0.996771)
+text = "Good ducking luck"
+label_settings = ExtResource("1_ucxpf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 200.0
+offset_right = 1888.0
+offset_bottom = 900.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 16
+
+[node name="QuestionLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "In law, settlement refers to:"
+label_settings = ExtResource("2_4kfko")
+
+[node name="Answer1Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="AnswerButton1" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer1Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_ls1pd")
+theme_override_styles/hover = ExtResource("3_ls1pd")
+button_pressed = true
+text_overrun_behavior = 2
+
+[node name="CheckBox1" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer1Container"]
+layout_mode = 2
+button_pressed = true
+
+[node name="AnswerLabel1" type="Label" parent="ScrollContainer/VBoxContainer/Answer1Container"]
+layout_mode = 2
+text = "An agreement or a contract between parties that terminates their civil 
+dispute"
+label_settings = ExtResource("4_tl3df")
+
+[node name="Answer2Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="AnswerButton2" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer2Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_ls1pd")
+theme_override_styles/hover = ExtResource("3_ls1pd")
+button_pressed = true
+text_overrun_behavior = 2
+
+[node name="CheckBox2" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer2Container"]
+layout_mode = 2
+
+[node name="AnswerLabel2" type="Label" parent="ScrollContainer/VBoxContainer/Answer2Container"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "An agreement or a contract between parties that terminates a criminal 
+dispute"
+label_settings = ExtResource("2_4kfko")
+
+[node name="Answer3Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="AnswerButton3" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer3Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_ls1pd")
+theme_override_styles/hover = ExtResource("3_ls1pd")
+text_overrun_behavior = 2
+
+[node name="CheckBox3" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer3Container"]
+layout_mode = 2
+button_pressed = true
+
+[node name="AnswerLabel3" type="Label" parent="ScrollContainer/VBoxContainer/Answer3Container"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "A colonial period township"
+label_settings = ExtResource("2_4kfko")
+
+[node name="Answer4Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="AnswerButton4" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer4Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_ls1pd")
+theme_override_styles/hover = ExtResource("3_ls1pd")
+text_overrun_behavior = 2
+
+[node name="CheckBox4" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer4Container"]
+layout_mode = 2
+button_pressed = true
+
+[node name="AnswerLabel4" type="Label" parent="ScrollContainer/VBoxContainer/Answer4Container"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "The process of adverse possession"
+label_settings = ExtResource("2_4kfko")
+
+[node name="CheckButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -547.5
+offset_top = -130.0
+offset_right = -172.5
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.03825, 0.970866)
+size_flags_horizontal = 4
+theme = ExtResource("4_bbf0n")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_4k6ch")
+text = "Check answers
+"
+
+[node name="NextQuestionButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 140.0
+offset_top = -130.0
+offset_right = 497.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.03825, 0.970866)
+size_flags_horizontal = 4
+theme = ExtResource("4_bbf0n")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_4k6ch")
+text = "Next question"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -221.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 133.0
+grow_horizontal = 0
+scale = Vector2(1.03825, 0.970866)
+size_flags_horizontal = 4
+theme = ExtResource("4_bbf0n")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_4k6ch")
+text = "Menu"
