@@ -1,0 +1,265 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0mar2q822o4d"]
+
+[ext_resource type="LabelSettings" uid="uid://d6gohf1yj5gp" path="res://Fonts/title.tres" id="1_ik0oc"]
+[ext_resource type="Script" path="res://SelectLecture/SelectLecture.gd" id="1_m3n7y"]
+[ext_resource type="LabelSettings" uid="uid://j4am0nttevp" path="res://Fonts/normal_text.tres" id="2_6e70b"]
+[ext_resource type="StyleBox" uid="uid://lr75ncsg3vbm" path="res://Fonts/button_style.tres" id="3_3qgc1"]
+[ext_resource type="Theme" uid="uid://bvd8u171meh78" path="res://Fonts/menu_button.tres" id="4_p25ll"]
+
+[sub_resource type="Theme" id="Theme_ankek"]
+OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_focus_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_hover_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+OptionButton/font_sizes/font_size = 32
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/font_sizes/font_size = 32
+PopupMenu/styles/hover = ExtResource("3_3qgc1")
+PopupMenu/styles/panel = ExtResource("3_3qgc1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsrgs"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.629674, 0.629675, 0.629675, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 10
+
+[node name="SelectLecture" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3n7y")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -639.0
+offset_top = 16.0
+offset_right = 639.0
+offset_bottom = 148.0
+grow_horizontal = 2
+scale = Vector2(1.00124, 1)
+text = "Choose lecture and chapter"
+label_settings = ExtResource("1_ik0oc")
+
+[node name="CurrentLectureLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -330.0
+offset_top = 185.0
+offset_right = -4.0
+offset_bottom = 252.0
+grow_horizontal = 2
+text = "Select lecture:"
+label_settings = ExtResource("2_6e70b")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 16.0
+offset_top = 190.0
+offset_right = 344.0
+offset_bottom = 250.0
+grow_horizontal = 2
+scale = Vector2(0.995546, 0.976183)
+theme = SubResource("Theme_ankek")
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = ExtResource("3_3qgc1")
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+theme_override_styles/pressed = ExtResource("3_3qgc1")
+item_count = 4
+popup/item_0/text = "Rechtsgeschichte"
+popup/item_0/id = 0
+popup/item_1/text = "Europarecht"
+popup/item_1/id = 1
+popup/item_2/text = "IT-Recht"
+popup/item_2/id = 2
+popup/item_3/text = "Privatrecht"
+popup/item_3/id = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -758.5
+offset_top = 280.0
+offset_right = 758.5
+offset_bottom = 363.0
+grow_horizontal = 2
+theme_override_constants/separation = 32
+
+[node name="ChooseAllChaptersButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+text = "Choose all chapters"
+
+[node name="AddLectureButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+text = "Add lecture"
+
+[node name="DeleteLectureButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+text = "Delete chosen lecture"
+
+[node name="AddChapterButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+text = "Add new chapter"
+
+[node name="AvailableChaptersLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -326.0
+offset_top = 410.0
+offset_right = 326.0
+offset_bottom = 477.0
+grow_horizontal = 2
+text = "Chapters for chosen lecture:"
+label_settings = ExtResource("2_6e70b")
+
+[node name="ChapterScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 510.0
+offset_right = 1888.0
+offset_bottom = 1060.0
+scale = Vector2(0.998412, 1)
+
+[node name="ChapterContainer" type="VBoxContainer" parent="ChapterScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="ChapterButton1" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte1"
+
+[node name="ChapterButton2" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+theme_override_styles/hover = ExtResource("3_3qgc1")
+text = "Loong Rechtsgeschichte2"
+
+[node name="ChapterButton3" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte3"
+
+[node name="ChapterButton4" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte4"
+
+[node name="ChapterButton5" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte5"
+
+[node name="ChapterButton6" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte6"
+
+[node name="ChapterButton7" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte7"
+
+[node name="ChapterButton8" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte8"
+
+[node name="ChapterButton9" type="Button" parent="ChapterScrollContainer/ChapterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("3_3qgc1")
+text = "Rechtsgeschichte9"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -221.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 133.0
+grow_horizontal = 0
+scale = Vector2(1.03825, 0.970866)
+size_flags_horizontal = 4
+theme = ExtResource("4_p25ll")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_nsrgs")
+text = "Menu"
