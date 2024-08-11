@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://g5eqn7itu60x"]
+[gd_scene load_steps=9 format=3 uid="uid://g5eqn7itu60x"]
 
 [ext_resource type="Script" path="res://PlayQuiz/QuizScreen.gd" id="1_dggsf"]
 [ext_resource type="LabelSettings" uid="uid://d6gohf1yj5gp" path="res://Fonts/title.tres" id="1_ucxpf"]
 [ext_resource type="LabelSettings" uid="uid://j4am0nttevp" path="res://Fonts/normal_text.tres" id="2_4kfko"]
+[ext_resource type="Script" path="res://PlayQuiz/QuizContainer.gd" id="3_13wd8"]
 [ext_resource type="StyleBox" uid="uid://lr75ncsg3vbm" path="res://Fonts/button_style.tres" id="3_ls1pd"]
 [ext_resource type="Theme" uid="uid://bvd8u171meh78" path="res://Fonts/menu_button.tres" id="4_bbf0n"]
-[ext_resource type="LabelSettings" uid="uid://dxt013ylsmuw4" path="res://Fonts/correct_answer_text.tres" id="4_tl3df"]
+[ext_resource type="PackedScene" uid="uid://bg4n6jwlesj1o" path="res://PlayQuiz/AnswerContainer.tscn" id="5_vtxih"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k6ch"]
 content_margin_left = 16.0
@@ -55,24 +56,41 @@ offset_right = 1888.0
 offset_bottom = 900.0
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="QuizContainer" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = 16
+script = ExtResource("3_13wd8")
 
-[node name="QuestionLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="QuestionLabel" type="Label" parent="ScrollContainer/QuizContainer"]
 layout_mode = 2
 size_flags_vertical = 2
 text = "In law, settlement refers to:"
 label_settings = ExtResource("2_4kfko")
 
-[node name="Answer1Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="AnswerContainer" parent="ScrollContainer/QuizContainer" instance=ExtResource("5_vtxih")]
 layout_mode = 2
-size_flags_horizontal = 0
+
+[node name="AnswerContainer2" parent="ScrollContainer/QuizContainer" instance=ExtResource("5_vtxih")]
+layout_mode = 2
+answerIndex = 1
+
+[node name="AnswerContainer3" parent="ScrollContainer/QuizContainer" instance=ExtResource("5_vtxih")]
+layout_mode = 2
+answerIndex = 2
+
+[node name="AnswerContainer4" parent="ScrollContainer/QuizContainer" instance=ExtResource("5_vtxih")]
+layout_mode = 2
+answerIndex = 3
+
+[node name="Answer2Container" type="HBoxContainer" parent="ScrollContainer/QuizContainer"]
+visible = false
+layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="AnswerButton1" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer1Container"]
+[node name="AnswerButton2" type="CheckButton" parent="ScrollContainer/QuizContainer/Answer2Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -82,35 +100,10 @@ theme_override_styles/hover = ExtResource("3_ls1pd")
 button_pressed = true
 text_overrun_behavior = 2
 
-[node name="CheckBox1" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer1Container"]
-layout_mode = 2
-button_pressed = true
-
-[node name="AnswerLabel1" type="Label" parent="ScrollContainer/VBoxContainer/Answer1Container"]
-layout_mode = 2
-text = "An agreement or a contract between parties that terminates their civil 
-dispute"
-label_settings = ExtResource("4_tl3df")
-
-[node name="Answer2Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-
-[node name="AnswerButton2" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer2Container"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = ExtResource("3_ls1pd")
-theme_override_styles/hover = ExtResource("3_ls1pd")
-button_pressed = true
-text_overrun_behavior = 2
-
-[node name="CheckBox2" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer2Container"]
+[node name="CheckBox2" type="CheckBox" parent="ScrollContainer/QuizContainer/Answer2Container"]
 layout_mode = 2
 
-[node name="AnswerLabel2" type="Label" parent="ScrollContainer/VBoxContainer/Answer2Container"]
+[node name="AnswerLabel2" type="Label" parent="ScrollContainer/QuizContainer/Answer2Container"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -119,12 +112,13 @@ text = "An agreement or a contract between parties that terminates a criminal
 dispute"
 label_settings = ExtResource("2_4kfko")
 
-[node name="Answer3Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="Answer3Container" type="HBoxContainer" parent="ScrollContainer/QuizContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="AnswerButton3" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer3Container"]
+[node name="AnswerButton3" type="CheckButton" parent="ScrollContainer/QuizContainer/Answer3Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -133,22 +127,23 @@ theme_override_styles/normal = ExtResource("3_ls1pd")
 theme_override_styles/hover = ExtResource("3_ls1pd")
 text_overrun_behavior = 2
 
-[node name="CheckBox3" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer3Container"]
+[node name="CheckBox3" type="CheckBox" parent="ScrollContainer/QuizContainer/Answer3Container"]
 layout_mode = 2
 button_pressed = true
 
-[node name="AnswerLabel3" type="Label" parent="ScrollContainer/VBoxContainer/Answer3Container"]
+[node name="AnswerLabel3" type="Label" parent="ScrollContainer/QuizContainer/Answer3Container"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "A colonial period township"
 label_settings = ExtResource("2_4kfko")
 
-[node name="Answer4Container" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="Answer4Container" type="HBoxContainer" parent="ScrollContainer/QuizContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="AnswerButton4" type="CheckButton" parent="ScrollContainer/VBoxContainer/Answer4Container"]
+[node name="AnswerButton4" type="CheckButton" parent="ScrollContainer/QuizContainer/Answer4Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -157,11 +152,11 @@ theme_override_styles/normal = ExtResource("3_ls1pd")
 theme_override_styles/hover = ExtResource("3_ls1pd")
 text_overrun_behavior = 2
 
-[node name="CheckBox4" type="CheckBox" parent="ScrollContainer/VBoxContainer/Answer4Container"]
+[node name="CheckBox4" type="CheckBox" parent="ScrollContainer/QuizContainer/Answer4Container"]
 layout_mode = 2
 button_pressed = true
 
-[node name="AnswerLabel4" type="Label" parent="ScrollContainer/VBoxContainer/Answer4Container"]
+[node name="AnswerLabel4" type="Label" parent="ScrollContainer/QuizContainer/Answer4Container"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "The process of adverse possession"
@@ -185,6 +180,8 @@ size_flags_horizontal = 4
 theme = ExtResource("4_bbf0n")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4k6ch")
+theme_override_styles/hover = ExtResource("3_ls1pd")
+theme_override_styles/pressed = ExtResource("3_ls1pd")
 text = "Check answers
 "
 
@@ -206,6 +203,8 @@ size_flags_horizontal = 4
 theme = ExtResource("4_bbf0n")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4k6ch")
+theme_override_styles/hover = ExtResource("3_ls1pd")
+theme_override_styles/pressed = ExtResource("3_ls1pd")
 text = "Next question"
 
 [node name="MenuButton" type="Button" parent="."]
@@ -227,4 +226,6 @@ theme_override_styles/hover = ExtResource("3_ls1pd")
 theme_override_styles/pressed = ExtResource("3_ls1pd")
 text = "Menu"
 
+[connection signal="pressed" from="CheckButton" to="ScrollContainer/QuizContainer" method="onCheckButtonPressed"]
+[connection signal="pressed" from="NextQuestionButton" to="." method="startNextQuiz"]
 [connection signal="pressed" from="MenuButton" to="." method="OnMenuButtonPressed"]
