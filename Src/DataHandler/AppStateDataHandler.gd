@@ -7,6 +7,9 @@ var isEditMode: bool
 var selectedLectureIndex: int = NO_SELECTED_LECTURE_CODE
 var selectedQuizData = {}
 
+var remainingQuizzes = []
+var currentQuiz = {}
+
 func setEditState(isEditModeParam: bool) -> void:
 	isEditMode = isEditModeParam
 
@@ -23,3 +26,12 @@ func setQuizState(
 		"selectedLectureIndex": selectedLectureIndexParam,
 		"selectedChapterIndex": selectedChapterIndexParam
 	}
+
+func setRemainingQuizzes(quizzes) -> void:
+	remainingQuizzes = quizzes
+
+func setCurrentQuizByIndex(quizIndex: int) -> void:
+	currentQuiz = remainingQuizzes[quizIndex]
+
+func removeRemainingQuizByIndex(quizIndex: int) -> void:
+	remainingQuizzes.remove_at(quizIndex)
