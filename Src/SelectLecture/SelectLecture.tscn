@@ -113,6 +113,8 @@ theme = ExtResource("4_p25ll")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = ExtResource("3_3qgc1")
 theme_override_styles/hover = ExtResource("3_3qgc1")
+theme_override_styles/pressed = ExtResource("3_3qgc1")
+theme_override_styles/disabled = ExtResource("3_3qgc1")
 text = "Choose all chapters"
 script = ExtResource("7_bfv74")
 

@@ -4,6 +4,7 @@ extends Control
 @onready var titleLabel: Label = $TitleLabel
 @onready var selectHBoxContainer: HBoxContainer = $SelectHBoxContainer
 @onready var editHBoxContainer: HBoxContainer = $EditHBoxContainer
+@onready var chooseAllChaptersButton: Button = %ChooseAllChaptersButton
 
 func _ready() -> void:
 	handleSelectAndEditButtons()
@@ -17,6 +18,11 @@ func handleSelectAndEditButtons() -> void:
 		selectHBoxContainer.visible = false
 		editHBoxContainer.visible = true
 	else:
+		var saveFileDataHandler = get_node("/root/SaveFileDataHandler")
+		var lectureAmount = saveFileDataHandler.getLectures()
+		if lectureAmount.size() == 0:
+			chooseAllChaptersButton.disabled = true
+			
 		titleLabel.text = "Choose quiz"
 		selectHBoxContainer.visible = true
 		editHBoxContainer.visible = false

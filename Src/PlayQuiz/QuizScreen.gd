@@ -34,9 +34,12 @@ func startNextQuiz() -> void:
 	var appStateDataHandler = get_node("/root/AppStateDataHandler")
 	var remainingQuizzes = appStateDataHandler.remainingQuizzes
 	
-	var nextQuizIndex = rng.randi_range(0, remainingQuizzes.size() - 1)
-	
-	appStateDataHandler.setCurrentQuizByIndex(nextQuizIndex)
-	appStateDataHandler.removeRemainingQuizByIndex(nextQuizIndex)
-	
-	quizContainer.displayNextQuiz()
+	if remainingQuizzes.size() == 0:
+		get_tree().change_scene_to_file("res://PlayQuiz/QuizzesFinishedScreen.tscn")
+	else:
+		var nextQuizIndex = rng.randi_range(0, remainingQuizzes.size() - 1)
+		
+		appStateDataHandler.setCurrentQuizByIndex(nextQuizIndex)
+		appStateDataHandler.removeRemainingQuizByIndex(nextQuizIndex)
+		
+		quizContainer.displayNextQuiz()
